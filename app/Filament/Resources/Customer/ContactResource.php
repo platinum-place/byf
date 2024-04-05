@@ -46,9 +46,7 @@ class ContactResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->label(__('app.name'))
                     ->required(),
-                Forms\Components\TextInput::make('phone')
-                    ->label(__('app.phone'))
-                    ->tel(),
+
             ]);
     }
 

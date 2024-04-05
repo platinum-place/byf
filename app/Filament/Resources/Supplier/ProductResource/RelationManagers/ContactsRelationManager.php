@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Customer\CustomerResource\RelationManagers;
+namespace App\Filament\Resources\Supplier\ProductResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -17,12 +17,12 @@ class ContactsRelationManager extends RelationManager
 
     public static function getModelLabel(): string
     {
-        return __('app.contact');
+        return "Estudiantes";
     }
 
     public static function getTitle(Model $ownerRecord, string $pageClass): string
     {
-        return __('app.contact');
+        return "Estudiantes";
     }
 
     public function form(Form $form): Form
@@ -33,9 +33,7 @@ class ContactsRelationManager extends RelationManager
                     ->label(__('app.name'))
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('phone')
-                    ->label(__('app.phone'))
-                    ->tel(),
+
             ]);
     }
 
@@ -47,8 +45,7 @@ class ContactsRelationManager extends RelationManager
                 \App\Filament\Tables\Components\TableColumns::getDateColumns([
                     Tables\Columns\TextColumn::make('name')
                         ->label(__('app.name')),
-                    Tables\Columns\TextColumn::make('phone')
-                        ->label(__('app.phone')),
+
                 ])
             )
             ->filters([

@@ -32,7 +32,7 @@ class SupplierResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('app.suppliers');
+        return "Plan de estudio";
     }
 
     public static function form(Form $form): Form
@@ -43,8 +43,7 @@ class SupplierResource extends Resource
                     ->label(__('app.name'))
                     ->required(),
                 Forms\Components\TextInput::make('phone')
-                    ->label(__('app.phone'))
-                    ->tel(),
+                    ->label("Categoria"),
             ]);
     }
 
@@ -57,7 +56,7 @@ class SupplierResource extends Resource
                         ->label(__('app.name'))
                         ->searchable(),
                     Tables\Columns\TextColumn::make('phone')
-                        ->label(__('app.phone'))
+                    ->label("Categoria")
                         ->searchable(),
                 ])
             )

@@ -19,7 +19,7 @@ class CustomerFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'phone' => $this->faker->phoneNumber,
+            'phone' => $this->faker->name,
             'identification' => $this->faker->text(50),
         ];
     }

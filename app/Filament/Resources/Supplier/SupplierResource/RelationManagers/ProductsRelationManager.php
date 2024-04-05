@@ -43,8 +43,7 @@ class ProductsRelationManager extends RelationManager
                 \App\Filament\Tables\Components\TableColumns::getDateColumns([
                     Tables\Columns\TextColumn::make('name')
                         ->label(__('app.name')),
-                    Tables\Columns\TextColumn::make('price')
-                        ->label(__('app.price')),
+
                 ])
             )
             ->filters([

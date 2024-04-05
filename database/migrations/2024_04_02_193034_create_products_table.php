@@ -18,9 +18,9 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->string('name');
-            $table->decimal('price');
-            $table->foreignIdFor(Supplier::class)->constrained();
-            $table->enum('type', ProductTypeEnum::values());
+            $table->decimal('price')->nullable();
+            $table->foreignIdFor(Supplier::class)->nullable()->constrained();
+            $table->enum('type', ProductTypeEnum::values())->nullable();
         });
     }
 

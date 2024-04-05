@@ -27,7 +27,7 @@ class CustomerImporter extends Importer
                 ->requiredMapping()
                 ->rules(['required', 'max:255']),
             ImportColumn::make('phone')
-                ->label(__('app.phone'))
+                ->label('Detalles')
                 ->requiredMapping()
                 ->rules(['required', 'max:255']),
         ];

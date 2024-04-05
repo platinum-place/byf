@@ -20,7 +20,7 @@ class ProductFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'price' => $this->faker->randomFloat(),
+            'price' => $this->faker->randomNumber(),
             'type' => $this->faker->randomElement(ProductTypeEnum::values()),
             'supplier_id' => Supplier::factory(),
         ];

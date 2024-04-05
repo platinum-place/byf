@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Supplier;
 
+use App\Models\Supplier\Supplier;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +18,9 @@ class AgentFactory extends Factory
     public function definition(): array
     {
         return [
+            'supplier_id' => Supplier::factory(),
             'name' => $this->faker->name,
-            'phone' => $this->faker->phoneNumber,
+            'phone' => $this->faker->date(),
         ];
     }
 }

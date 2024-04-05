@@ -13,6 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\TimePicker;
 
 class AgentResource extends Resource
 {
@@ -32,7 +35,7 @@ class AgentResource extends Resource
 
     public static function getNavigationGroup(): ?string
     {
-        return __('app.suppliers');
+        return "Plan de estudio";
     }
 
     public static function form(Form $form): Form
@@ -40,11 +43,13 @@ class AgentResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label('Nombre')
                     ->required(),
-                Forms\Components\TextInput::make('phone')
-                    ->tel(),
+                DatePicker::make('phone')
+                    ->label('Fecha inicio'),
                 Forms\Components\Select::make('supplier_id')
                     ->relationship('supplier', 'name')
+                    ->label("Curso")
                     ->required(),
             ]);
     }

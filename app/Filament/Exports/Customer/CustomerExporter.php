@@ -30,7 +30,7 @@ class CustomerExporter extends Exporter
             ExportColumn::make('identification')
                 ->label(__('app.identification')),
             ExportColumn::make('phone')
-                ->label(__('app.phone')),
+                ->label('Detalles'),
         ];
     }
 }

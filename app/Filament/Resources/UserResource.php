@@ -1,62 +1,39 @@
 <?php
 
-namespace App\Filament\Resources\Supplier;
+namespace App\Filament\Resources;
 
-use App\Filament\Resources\Supplier\ProductResource\Pages;
-use App\Filament\Resources\Supplier\ProductResource\RelationManagers;
-use App\Models\Supplier\Product;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use App\Models\User;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\UserResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Str;
+use App\Filament\Resources\UserResource\RelationManagers;
 
-class ProductResource extends Resource
+class UserResource extends Resource
 {
-    protected static ?string $model = Product::class;
+    protected static ?string $model = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    public static function getModelLabel(): string
-    {
-        return __('app.product');
-    }
-
-    public static function getPluralModelLabel(): string
-    {
-        return __('app.products');
-    }
-
-    public static function getNavigationGroup(): ?string
-    {
-        return "Plan de estudio";
-    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                ->label('Nombre')
-
                     ->required(),
-                Forms\Components\TextInput::make('price')
-                    ->required()
-                    ->numeric()
-                    ->label('Cant. estudiantes')
-                    ,
-                Forms\Components\Select::make('supplier_id')
-                ->label('Lider estudiante')
-
-                    ->relationship('supplier', 'name')
+                Forms\Components\TextInput::make('email')
+                    ->email()
                     ->required(),
-                Forms\Components\TextInput::make('type')
-                ->label('Categoria')
-
+                Forms\Components\DateTimePicker::make('email_verified_at'),
+                Forms\Components\TextInput::make('password')
+                    ->password()
                     ->required(),
+                Select::make('roles')->multiple()->relationship('roles', 'name')
             ]);
     }
 
@@ -64,6 +41,13 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('email_verified_at')
+                    ->dateTime()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -76,19 +60,6 @@ class ProductResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('name')
-                ->label("Nombre")
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('price')
-                ->label('Cant. estudiantes')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('supplier.name')
-                ->label('Lider de estudio')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('type')
-                ->label('Categoria')
-                    ->searchable(),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
@@ -109,17 +80,17 @@ class ProductResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\ContactsRelationManager::class,
+            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListProducts::route('/'),
-            'create' => Pages\CreateProduct::route('/create'),
-            'view' => Pages\ViewProduct::route('/{record}'),
-            'edit' => Pages\EditProduct::route('/{record}/edit'),
+            'index' => Pages\ListUsers::route('/'),
+            'create' => Pages\CreateUser::route('/create'),
+            'view' => Pages\ViewUser::route('/{record}'),
+            'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
 
