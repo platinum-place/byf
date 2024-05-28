@@ -41,6 +41,7 @@ class UserResource extends Resource
                     ->translateLabel()
                     ->required(),
                 Forms\Components\TextInput::make('email')
+                    ->unique()
                     ->translateLabel()
                     ->email()
                     ->required(),
