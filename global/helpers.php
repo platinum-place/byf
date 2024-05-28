@@ -7,7 +7,7 @@ if (! function_exists('only_admin_can')) {
             /** @var \App\Models\User */
             $user = auth()->user();
 
-            return ! $user->isAdmin();
+            return $user->isAdmin();
         };
     }
 }
