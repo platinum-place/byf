@@ -11,7 +11,8 @@
         "php": "^8.2",
         "filament/filament": "^3.2",
         "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "lorisleiva/laravel-actions": "^2.8"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -27,10 +28,7 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        },
-        "files": [
-            "global/helpers.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {

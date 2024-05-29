@@ -1,7 +1,15 @@
 <?php
 
-if (! function_exists('only_admin_can')) {
-    function only_admin_can(): Closure
+namespace App\Actions\Auth;
+
+use Closure;
+use Lorisleiva\Actions\Concerns\AsAction;
+
+class OnlyAdminCanClosure
+{
+    use AsAction;
+
+    public function handle(): Closure
     {
         return function () {
             /** @var \App\Models\User */
